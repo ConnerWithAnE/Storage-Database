@@ -1,0 +1,116 @@
+
+* {
+  font-family: 'Comic Neue', cursive;
+  margin: 0;
+  padding: 0;
+}
+
+html, body {
+  height: 100%;
+  margin: 0;
+}
+
+/* Search Section */
+
+.search-sec p {
+  font-size: min(3vw, 24px);
+  text-align: center;
+}
+
+.search-btns {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.search-sec-btn {
+  border: 0;
+  background-color: #E2E2E2;
+  margin: 0 4% 0 4%;
+  padding: 1% 5% 1% 5%;
+  border-radius: 7px;
+}
+
+
+.search-input-go {
+  display: flex;
+  justify-content: center;
+  background-color: #FFB3E9;
+  width: 100%;
+}
+
+.search-input-cont {
+  height: 20%;;
+}
+
+#search-input {
+  background-color: #E2E2E2;
+  border: 0;
+  border-radius: 7px;
+}
+
+#search-btn {
+  
+}
+
+.search-btn {
+  display: inline;
+  height: 50%;
+}
+
+
+
+
+
+/* Main Page */
+
+.btns {
+  height: 100%;
+}
+
+.sel-btn {
+    font-size: min(5vw, 36px);
+    border: 0;
+    width: 100%;
+    display: inline;
+    height: calc(100% / 3);
+}
+
+.search {
+  background-color: #FFB3E9;
+}
+
+.insert {
+  background-color: #BAE1C4;
+}
+
+.remove {
+  background-color: #BAE1FF;
+}
+
+.search-sec {
+  background-color: #FFB3E9;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.hidden {
+  display: none;
+}
