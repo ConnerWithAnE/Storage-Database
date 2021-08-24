@@ -40,22 +40,41 @@ html, body {
 }
 
 .search-input-cont {
-  height: 20%;;
+  background-color: #E2E2E2;
+  border-radius: 7px;
+  margin-top: 2%;
+  display: flex;
+  justify-content: center;
+  height: auto;
+  width: 50%;
 }
 
 #search-input {
+  font-size: min(8vw, 24px);
   background-color: #E2E2E2;
   border: 0;
   border-radius: 7px;
-}
-
-#search-btn {
+  height: 100%;
+  width: 100%;
+  margin: 0;
+  padding: 0;
   
 }
 
+#search-btn {
+  background-color: #E2E2E2;
+  border-radius: 7px;
+  height: auto;
+  border: 0;
+  width: 20%;
+
+}
+
 .search-btn {
-  display: inline;
-  height: 50%;
+
+  border-left: 1px solid #9C9C9C;
+  padding: 7px;
+  width: 10%;
 }
 
 
