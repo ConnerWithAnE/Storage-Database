@@ -1,10 +1,6 @@
 const http = require('http');
-//const path = require("path");
-//const express = require('express');
 const fs = require('fs');
 const port = 8080;
-//const app = new express();
-//app.use(express.static(__dirname+'./public'));
 
 
 
@@ -43,6 +39,32 @@ const server = http.createServer(function(req, res) {
     else if (req.url === '/main.js') {
         res.writeHead(200, { 'Content-Type': 'text/javascript'})
           fs.readFile('main.js', function(error, data) {
+                if (error) {
+                    res.writeHead(404);
+                    res.write('Error: File Not Found');
+              } else {
+                  res.write(data);
+              }
+              res.end();
+        })
+    }
+
+    else if (req.url === '/handleJson.js') {
+        res.writeHead(200, { 'Content-Type': 'text/javascript'})
+          fs.readFile('handleJson.js', function(error, data) {
+                if (error) {
+                    res.writeHead(404);
+                    res.write('Error: File Not Found');
+              } else {
+                  res.write(data);
+              }
+              res.end();
+        })
+    }
+
+    else if (req.url === '/storage.json') {
+        res.writeHead(200, { 'Content-Type': 'application/json'})
+          fs.readFile('storage.json', function(error, data) {
                 if (error) {
                     res.writeHead(404);
                     res.write('Error: File Not Found');
