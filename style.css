@@ -13,7 +13,8 @@ html, body {
 /* Search Section */
 
 .search-sec p {
-  font-size: min(3vw, 24px);
+  font-size: min(5vw, 28px);
+  padding-bottom: 5%;
   text-align: center;
 }
 
@@ -24,10 +25,11 @@ html, body {
 }
 
 .search-sec-btn {
+  font-size: min(4vw, 20px);
   border: 0;
   background-color: #E2E2E2;
   margin: 0 4% 0 4%;
-  padding: 1% 5% 1% 5%;
+  padding: 1% 5.5% 1% 5.5%;
   border-radius: 7px;
 }
 
@@ -57,8 +59,8 @@ html, body {
   height: 100%;
   width: 100%;
   margin: 0;
-  padding: 0;
-  
+  padding: 0 0 0 2%;
+  outline: none;
 }
 
 #search-btn {
@@ -70,11 +72,57 @@ html, body {
 
 }
 
+
+
 .search-btn {
 
   border-left: 1px solid #9C9C9C;
   padding: 7px;
   width: 10%;
+}
+
+/* Insert Section */
+
+.insert-sec {
+  background-color: #BAE1C4;
+}
+
+.insert-btns {
+  width: 100%;
+  display:inline-block;
+  justify-content: center;
+  padding: auto;
+  border-bottom: 1px solid #999999;
+}
+
+.insert-input {
+  text-align: center;
+  outline: none;
+  display: list-item;
+  font-size: min(8vw, 24px);
+  background-color: #E2E2E2;
+  border: 0;
+  border-radius: 7px;
+  height: 100%;
+  width: 40%;
+  margin: 0 auto 5% auto;
+  padding: 2% 4% 2% 4%;
+}
+
+insert-btn-con {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.insert-sec-btn {
+  display: list-item;
+  font-size: min(4vw, 20px);
+  border: 0;
+  background-color: #E2E2E2;
+  margin: 3% auto 3% auto;
+  padding: 1% 5.5% 1% 5.5%;
+  border-radius: 7px;
 }
 
 
@@ -87,8 +135,20 @@ html, body {
   height: 100%;
 }
 
+.bts-search-clicked {
+  padding-top: 10%;
+  background-color: #FFB3E9;
+  height: calc(100% / 3.5);
+}
+
+.bts-insert-clicked {
+  padding-top: 10%;
+  background-color: #BAE1C4;
+  height: calc(100% / 3.5);
+}
+
 .sel-btn {
-    font-size: min(5vw, 36px);
+    font-size: min(8vw, 36px);
     border: 0;
     width: 100%;
     display: inline;
@@ -101,6 +161,8 @@ html, body {
 
 .insert {
   background-color: #BAE1C4;
+  transition: transition;
+  -webkit-transition: bottom 2s 2s ease-out;
 }
 
 .remove {
@@ -112,6 +174,12 @@ html, body {
 }
 
 
+/* Clicked Element Animations */
+
+.search-clicked {
+  position: absolute;
+  -webkit-transition: bottom 0.3s 0.1s ease-out;
+}
 
 
 

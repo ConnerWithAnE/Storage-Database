@@ -11,17 +11,16 @@
     <link href="https://fonts.googleapis.com/css2?family=Comic+Neue&display=swap" rel="stylesheet">
 
 
-    <title>Document</title>
+    <title>Storage Lookup</title>
 </head>
     <body>
-    
         <div class="btns">
             <button class="sel-btn search">Search</button>
-            <button class="sel-btn insert ">Insert</button>
+            <button class="sel-btn insert">Insert</button>
             <button class="sel-btn remove ">Remove</button>
         </div>
 
-        <div class="search-sec">
+        <div class="search-sec hidden">
             <p>by</p>
             <div class="search-btns">
                 <button class="search-sec-btn">Box</button>
@@ -32,9 +31,21 @@
                     <input type="text" id="search-input" placeholder="Item Name">
                     <input type="image" src="img/search.png" name='searchbtn' class="search-btn"/>
                 </div>
+                <div id="match-list"></div>
             </div>
         </div>
 
-        <script src="connect.js"></script>
+        <div class="insert-sec hidden">
+
+            <div class="insert-btns">
+                <input type="text" class="insert-input" id='input-insert-box' placeholder="Box Number">
+                <input type="text" class="insert-input" id='insert-input-item' placeholder="Item Name">
+            </div>
+            <div class="insert-btn-con">
+                <button class="insert-sec-btn">Insert</button>
+            </div>
+        </div>
+
+        <script type="module" src="connect.js"></script>
     </body>
 </html>
