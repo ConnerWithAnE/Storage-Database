@@ -38,10 +38,12 @@ html, body {
   display: flex;
   justify-content: center;
   background-color: #FFB3E9;
+  height: auto;
   width: 100%;
 }
 
 .search-input-cont {
+  align-items: flex-start;
   background-color: #E2E2E2;
   border-radius: 7px;
   margin-top: 2%;
