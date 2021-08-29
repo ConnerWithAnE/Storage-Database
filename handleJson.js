@@ -5,19 +5,13 @@ const searchMatchList = document.getElementById('search-match-list');
 const insertMatchList = document.getElementById('insert-match-list');
 const insertBoxMatchList = document.getElementById('insert-box-match-list');
 
-console.log("RUNNING");
-alert("RUNNING");
-
 /******************************************************/
 // Search Suggestion System
 const searchSearchItems = async searchText => {
-    const searchRes = await fetch('../pass.json');
+    const searchRes = await fetch('pass.json');
     const searchItems = await searchRes.json();
 
-    console.log(searchItems);
-
     let searchMatches = searchItems.filter(searchItem => {
-        console.log(searchItem);
         const searchRegex = new RegExp(`^${searchText}`, 'gi');
         return searchItem.ItemName.match(searchRegex);
     });
@@ -33,7 +27,7 @@ const outputSearchHtml = searchMatches => {
     if (searchMatches.length > 0) {
         const html = searchMatches.map(searchMatch => `
         <div class ="card">
-            <h4>${searchMatch.name}</h4>
+            <h4>${searchMatch.ItemName}</h4>
         </div>
         `).join('');
 
@@ -43,7 +37,7 @@ const outputSearchHtml = searchMatches => {
 
 searchItemBox.addEventListener('input', () => searchSearchItems(searchItemBox.value));
 // End of search Suggestion
-/******************************************************/
+/******************************************************
 // Insert Suggestion System
 const searchInsertItems = async insertText => {
     const insertRes = await fetch('../storage.json');

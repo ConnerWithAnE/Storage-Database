@@ -14,43 +14,18 @@ dataBase.openDatabase();
 let sqlCreate = `CREATE TABLE storage(BoxNum REAL, ItemName TEXT, Location TEXT)`
 
 
-dataBase.db.run(`INSERT INTO storage VALUES(1, 'waffle maker', 'Storage Room')`)
+//dataBase.db.run(`INSERT INTO storage VALUES(3, 'cheese cart', 'Storage Room')`)
 
-const searchSearchItems = async searchText => {
-    const searchRes = await dataBase.db.each(`SELECT ItemName FROM storage`, (err, row) => {
-        if (err) {
-            throw err;
-        }
-    }).toArray();
-    
+dataBase.db.all(`SELECT ItemName
+                 FROM   storage`, (err, rows) => {
+                     if (err) throw err;
 
-    console.log(searchItems);
+                     fs.writeFile('pass.json', JSON.stringify(rows), err => {
+                         if (err) throw err
 
-    let searchMatches = searchRes.filter(searchItem => {
-        console.log(searchItem);
-        const searchRegex = new RegExp(`^${searchText}`, 'gi');
-        return searchItem.itemName.match(searchRegex);
-    });
-    if (searchText.length === 0) {
-        searchMatches = [];
-        searchMatchList.innerHTML = '';
-    }
-    
-    outputSearchHtml(searchMatches);
-};
-
-
-const outputSearchHtml = searchMatches => {
-    if (searchMatches.length > 0) {
-        const html = searchMatches.map(searchMatch => `
-        <div class ="card">
-            <h4>${searchMatch.name}</h4>
-        </div>
-        `).join('');
-
-        searchMatchList.innerHTML = html;
-    }
-}
+                         console.log("Pass Filled");
+                     });
+                 });
 
 
 // Open Server
@@ -88,6 +63,34 @@ const server = http.createServer(function(req, res) {
     else if (req.url === '/main.js') {
         res.writeHead(200, { 'Content-Type': 'text/javascript'})
           fs.readFile('main.js', function(error, data) {
+                if (error) {
+                    res.writeHead(404);
+                    res.write('Error: File Not Found');
+              } else {
+                  res.write(data);
+              }
+              res.end();
+        })
+    }
+
+    // Handle Json request
+    else if (req.url === '/handleJson.js') {
+        res.writeHead(200, { 'Content-Type': 'text/javascript'})
+          fs.readFile('handleJson.js', function(error, data) {
+                if (error) {
+                    res.writeHead(404);
+                    res.write('Error: File Not Found');
+              } else {
+                  res.write(data);
+              }
+              res.end();
+        })
+    }
+
+    // Handle Json file
+    else if (req.url === '/pass.json') {
+        res.writeHead(200, { 'Content-Type': 'application/json'})
+          fs.readFile('pass.json', function(error, data) {
                 if (error) {
                     res.writeHead(404);
                     res.write('Error: File Not Found');

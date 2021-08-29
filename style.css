@@ -184,13 +184,23 @@ insert-btn-con {
 }
 
 
+.match-list {
+  width: 50%;
+  margin: auto;
+}
 
 
-
-
-
-
-
+.card {
+  font-size: min(8vw, 24px);
+  background-color: #E2E2E2;
+  border: 0.5px #9C9C9C solid;
+  border-radius: 7px;
+  height: 100%;
+  width: 100%;
+  margin: 0;
+  padding: 0 0 0 2%;
+  outline: none;
+}
 
 
 
