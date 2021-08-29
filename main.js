@@ -31,3 +31,5 @@ document.querySelector('.remove').addEventListener('click', function() {
     document.body.style.backgroundColor = "#BAE1FF";
     console.log('remove clicked');
 });
+
+
