@@ -3,42 +3,43 @@
 const searchForm = document.getElementById('search-form');
 const searchInput = document.getElementById('search-input');
 
+let save;
+
 document.getElementById('search-go-btn').addEventListener('click', function(e) {
     e.preventDefault();
     if (searchInput.placeholder == ""){
         alert("Must Select Search Type { Box OR Item }");
         return;
     } else {
-        const sInput = searchInput.value;
+        const searchinp = searchInput.value;
         if (searchInput.placeholder == "Item Name") {
-            const data = {"value": sInput, 
+            const data = {"sInput": searchinp, 
                           "type" : "item"};
             const options = {
                 method: 'POST',
-                header: {
+                headers: {
                     'Content-Type': 'application/json'
                 },
                 body: JSON.stringify(data)
             };
-            fetch('/search-input', options)
-            .then( function (response) {
-                return response.text();
-            })
-            .then(function (text) {
-                console.log(text);
+            fetch('/search-input', options).then(response => {
+                console.log(response.json().boxnum);
             });
         }
+            
         else if (searchInput.placeholder == "Box Number") {
-            const data = {"value": sInput, 
+            const data = {"sInput": searchinp, 
                           "type" : "box"};
             const options = {
                 method: 'POST',
-                header: {
+                headers: {
                     'Content-Type': 'application/json'
                 },
                 body: JSON.stringify(data)
             };
-            fetch('/search-input', options);
+            fetch('/search-input', options).then(response => {
+                console.log(response);
+            });;
         };
     }
 })
