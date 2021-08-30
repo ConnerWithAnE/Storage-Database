@@ -1,15 +1,36 @@
 const http = require('http');
 const handleSQLite = require('./handleSQLite');
+
 //const path = require("path");
-//const express = require('express');
+
+const express = require('express');
 const fs = require('fs');
 const port = 8080;
-//const app = new express();
-//app.use(express.static(__dirname+'./public'));
+const app = new express();
+
+app.listen(8080);
+app.use(express.static('public'));
+
+const dataBase = new handleSQLite();
+      dataBase.openDatabase();
 
 
-let dataBase = new handleSQLite();
-dataBase.openDatabase();
+app.use(express.json({limit: '1mb'}));
+
+app.post('/search-input', (req, res) => {
+    console.log(req.body);
+    console.log("HELLO");
+    //res.send(200);
+});
+
+function checkExistence(item, boxNum) {
+    if (dataBase.db.run(`SELECT EXISTS(SELECT 1 FROM storage WHERE ItemName = ${item})`).fetchone()) {
+        dataBase.db.run(`UPDATE storage SET BoxNum = ${boxNum} WHERE ItemName = ${item}`);
+    } else {
+        dataBase.db.run(`INSERT INTO storage VALUES(${boxNum}, ${item}, 'Storage Room')`);
+    }
+}
+
 
 let sqlCreate = `CREATE TABLE storage(BoxNum REAL, ItemName TEXT, Location TEXT)`
 
@@ -28,6 +49,7 @@ dataBase.db.all(`SELECT ItemName
                  });
 
 
+/*
 // Open Server
 const server = http.createServer(function(req, res) {
     
@@ -147,7 +169,7 @@ const server = http.createServer(function(req, res) {
     
 });
 
-
+/*
 // Open the port to listen to
 server.listen(port, '172.16.1.80' || 'localhost', function(error) {
     if (error) {
@@ -156,6 +178,10 @@ server.listen(port, '172.16.1.80' || 'localhost', function(error) {
         console.log('Server is listening on port ' + port);
     }
 });
+*/
+
+
+
 
 
 
