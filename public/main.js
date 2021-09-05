@@ -6,6 +6,7 @@ const searchInput = document.getElementById('search-input');
 let save;
 
 document.getElementById('search-go-btn').addEventListener('click', function(e) {
+    let inBox;
     e.preventDefault();
     if (searchInput.placeholder == ""){
         alert("Must Select Search Type { Box OR Item }");
@@ -22,9 +23,21 @@ document.getElementById('search-go-btn').addEventListener('click', function(e) {
                 },
                 body: JSON.stringify(data)
             };
+
             fetch('/search-input', options).then(response => {
-                console.log(response.json().boxnum);
+                console.log(response.json().body.items);
+
             });
+                /*
+                document.querySelector(".search-result-con").classList.remove('hidden');
+
+
+                if (boxnum != null) {
+                    document.querySelector('.search-result').innerHTML = 
+                    document.getElementById('search-remove-btn').classList.remove('hidden');
+                }
+                */
+            
         }
             
         else if (searchInput.placeholder == "Box Number") {
@@ -38,11 +51,51 @@ document.getElementById('search-go-btn').addEventListener('click', function(e) {
                 body: JSON.stringify(data)
             };
             fetch('/search-input', options).then(response => {
-                console.log(response);
-            });;
+                console.log(response.json()[[PromiseResult]].items);
+            });
         };
     }
+
 })
+
+
+
+document.getElementById('search-remove-btn').addEventListener('click', function(e) {
+    e.preventDefault();
+});
+const insertForm = document.getElementById('insert-form');
+const insertInputItem = document.getElementById('insert-input-item');
+const insertInputBox = document.getElementById('input-insert-box');
+
+
+document.getElementById('insert-go-btn').addEventListener('click', function(e) {
+    e.preventDefault();
+
+    if (insertInputItem.value == "") alert("Must Input Item Name")
+    else if (insertInputBox.value == "") alert("Must Input Box Number");
+    
+    else {
+        const insertIteminp = insertInputItem.value;
+        const insertBoxinp = insertInputBox.value;
+        
+            const data = {"iInput": insertIteminp, 
+                          "bInput": insertBoxinp
+                        };
+            const options = {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(data)
+            };
+            fetch('/insert-input', options)
+            /*.then(response => {
+                console.log(response.json().boxnum);
+            });*/
+         
+    }
+})
+
 
 
 

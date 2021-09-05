@@ -15,53 +15,81 @@ const dataBase = new handleSQLite();
 
 app.use(express.json({limit: '1mb'}));
 
+
 let sendBack;
 const sendBackItems = [];
-app.post('/search-input', (req, response) => {
+app.post('/search-input', async (req, response) => {
     const searchType = req.body.type;
     const searchValue = req.body.sInput;
-    
+    //console.log(searchValue);
     if (searchType == "item") {
-        dataBase.db.serialize(() => {
-        dataBase.db.get(`SELECT BoxNum FROM storage WHERE ItemName=$itemname`, {
-            $itemname: searchValue },
-            (err, row) => {
-            if (err) throw err;
-            sendBack = row.BoxNum;
-        });
-        
-    })}
+        itemQuery(searchValue);
+        await new Promise(r => setTimeout(r, 100));
+        response.json({
+            boxnum: `${sendBack}`
+        })    
+        console.log(sendBack);
+    }
     else if (searchType == "box") {
-        dataBase.db.each(`SELECT ItemName FROM storage WHERE BoxNum=$boxnum`, {
-            $boxnum: Number(searchValue) },
-            (err, row) => {
-            if (err) throw err;
-            sendBackItems.push(row.ItemName);
-        });
+        boxQuery(searchValue);
+        await new Promise(r => setTimeout(r, 100));
         response.json({
             items: sendBackItems
         });
+        console.log(sendBackItems)
     }
-    else {
-        response.end();
-    }
-    response.json({
-        boxnum: `${sendBack}`
-    })
+    
+    });
     //console.log(typeof req.body.sInput);
     //console.log(sendBackItems);
     //console.log(sendBack);
     //console.log("HELLO");
     //response.json({})
+
+
+app.post('/insert-input', (req, response) => {
+    const insertI = req.body.iInput;
+    const insertB = req.body.bInput;
+
+    console.log(dataBase.db.run(`SELECT BoxNum FROM storage WHERE EXISTS (SELECT * FROM storage WHERE ItemName = "${insertI})`));
+    
+    /*if (dataBase.db.run(`SELECT BoxNum FROM storage WHERE EXISTS (SELECT * FROM storage WHERE ItemName = ${insertI})`) != null) {
+        dataBase.db.run(`UPDATE storage SET BoxNum = ${insertB} WHERE ItemName = ${insertI}`);
+    } else {
+        dataBase.db.run(`INSERT INTO storage VALUES(${insertB}, ${insertI}, 'Storage Room')`);
+    }*/
 });
 
-function checkExistence(item, boxNum) {
-    if (dataBase.db.run(`SELECT EXISTS(SELECT 1 FROM storage WHERE ItemName = ${item})`).fetchone()) {
-        dataBase.db.run(`UPDATE storage SET BoxNum = ${boxNum} WHERE ItemName = ${item}`);
-    } else {
-        dataBase.db.run(`INSERT INTO storage VALUES(${boxNum}, ${item}, 'Storage Room')`);
-    }
-}
+
+
+
+
+
+
+
+
+
+async function boxQuery(val) {
+    dataBase.db.serialize(() => {
+        dataBase.db.each(`SELECT ItemName FROM storage WHERE BoxNum=$boxnum`, {
+            $boxnum: val },
+            (err, row) => {
+            if (err) throw err;
+            sendBackItems.push(row.ItemName);
+        })
+    })};
+
+async function itemQuery(val) {
+    dataBase.db.serialize(() => {
+        dataBase.db.get(`SELECT BoxNum FROM storage WHERE ItemName=$itemname`, {
+            $itemname: val },
+            (err, row) => {
+            if (err) throw err;
+            sendBack = row.BoxNum;
+        });
+        
+    })}; 
+
 
 
 let sqlCreate = `CREATE TABLE storage(BoxNum REAL, ItemName TEXT, Location TEXT)`

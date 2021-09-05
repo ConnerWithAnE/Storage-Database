@@ -99,6 +99,7 @@ html, body {
 }
 
 .search-result {
+  align-items: center;
   border-radius: 7px;
   margin: 5%;
   overflow: hidden;
@@ -112,6 +113,17 @@ html, body {
 
 .search-result p {
   font-size: min(5vw, 50px);
+}
+
+.search-remove-button {
+  display: flex;
+  font-size: min(4vw, 20px);
+  border: 0;
+  background-color: red;
+  margin: 10% auto 0 auto;
+  width: auto;
+  padding: 1% 5.5% 1% 5.5%;
+  border-radius: 7px;
 }
 
 

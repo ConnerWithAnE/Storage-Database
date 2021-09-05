@@ -34,7 +34,7 @@
                 <div class="search-input-cont">
                     <input type="text" id="search-input" placeholder="" name="searchInput">
                     <div name=""></div>
-                    <input type="image" src="/img/search.png" name='searchbtn' class="search-btn" id="search-go-btn"/>
+                    <input type="image" src="./img/search.png" name='searchbtn' class="search-btn" id="search-go-btn"/>
                 </div>
             
             </div>
@@ -45,6 +45,7 @@
             <div class="search-result-con hidden">
                 <div class="search-result">
                     <p>BOX 5</p>
+                    <button class="search-remove-button hidden" id="search-remove-btn">Remove</button>
                 </div>
             </div>
 
@@ -53,14 +54,16 @@
         </div>
 
         <div class="insert-sec hidden">
-
+        <form id="insert-form">
             <div class="insert-btns">
                 <input type="text" class="insert-input" id='input-insert-box' placeholder="Box Number">
                 <input type="text" class="insert-input" id='insert-input-item' placeholder="Item Name">
             </div>
+        
             <div class="insert-btn-con"> 
-                <button class="insert-sec-btn">Insert</button>
+                <button class="insert-sec-btn" id="insert-go-btn">Insert</button>
             </div>
+        </form>
         </div>
 
         
