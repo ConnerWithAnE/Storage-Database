@@ -98,7 +98,7 @@ html, body {
   width: 100%;
 }
 
-.search-result {
+#search-result {
   align-items: center;
   border-radius: 7px;
   margin: 5%;

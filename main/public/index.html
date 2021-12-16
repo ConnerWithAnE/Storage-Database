@@ -26,27 +26,27 @@
             <p>by</p>
             
             <div class="search-btns">
-                <button class="search-sec-btn" id="box-search">Box</button>
-                <button class="search-sec-btn" id="item-search">Item</button>
+                <button class="search-sec-btn" id="box-search" onclick="setBoxSearch()">Box</button>
+                <button class="search-sec-btn" id="item-search" onclick="setItemSearch()">Item</button>
             </div>
-            <form id="search-form">
+            <div id="search-form">
             <div class="search-input-go">
                 <div class="search-input-cont">
                     <input type="text" id="search-input" placeholder="" name="searchInput">
                     <div name=""></div>
-                    <input type="image" src="./img/search.png" name='searchbtn' class="search-btn" id="search-go-btn"/>
+                    <input type="image" src="./img/search.png" name='searchbtn' class="search-btn" id="search-go-btn" onclick="searchItem()"/>
                 </div>
             
             </div>
-            </form>
+        </div>
             <div class="search-input-go" id="match-sec">
                 <div id="search-match-list" class="match-list"></div>
             </div>
             <div class="search-result-con hidden">
-                <div class="search-result">
-                    <p>BOX 5</p>
-                    <button class="search-remove-button hidden" id="search-remove-btn">Remove</button>
+                <div id="search-result">
+                
                 </div>
+                <button class="search-remove-button hidden" id="search-remove-btn">Remove</button> 
             </div>
 
 
@@ -54,16 +54,16 @@
         </div>
 
         <div class="insert-sec hidden">
-        <form id="insert-form">
+        <div id="insert-form">
             <div class="insert-btns">
-                <input type="text" class="insert-input" id='input-insert-box' placeholder="Box Number">
+                <input type="text" class="insert-input" id='insert-input-box' placeholder="Box Number">
                 <input type="text" class="insert-input" id='insert-input-item' placeholder="Item Name">
             </div>
         
             <div class="insert-btn-con"> 
-                <button class="insert-sec-btn" id="insert-go-btn">Insert</button>
+                <button class="insert-sec-btn" id="insert-go-btn" onclick="insertItem()">Insert</button>
             </div>
-        </form>
+        </div>
         </div>
 
         
