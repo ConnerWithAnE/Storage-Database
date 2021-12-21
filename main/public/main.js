@@ -119,9 +119,12 @@ const insertInputBox = document.getElementById('input-insert-box');
 // Search Button Controller
 document.querySelector('.search').addEventListener('click', function() {
     document.querySelector('.search-sec').classList.remove('hidden');
+    document.querySelector('.search').classList.add('hidden');
+    document.querySelector('.searchTitle').classList.remove('hidden');
     document.querySelector('.insert').classList.add('hidden');
     document.querySelector('.remove').classList.add('hidden');
-    document.querySelector('.btns').classList.add('bts-search-clicked');
+    document.querySelector('.extraPanel').classList.add('hidden');
+    document.querySelector('.btns').classList.add('hidden');
     document.body.style.backgroundColor = "#FFB3E9";
 
     console.log('search clicked');
@@ -150,8 +153,11 @@ document.querySelector('#item-search').addEventListener('click', function() {
 document.querySelector('.insert').addEventListener('click', function() {
     document.querySelector('.insert-sec').classList.remove('hidden');
     document.querySelector('.search').classList.add('hidden');
+    document.querySelector('.insert').classList.add('hidden');
+    document.querySelector('.insertTitle').classList.remove('hidden');
     document.querySelector('.remove').classList.add('hidden');
-    document.querySelector('.btns').classList.add('bts-insert-clicked');
+    document.querySelector('.extraPanel').classList.add('hidden');
+    document.querySelector('.btns').classList.add('hidden');
     document.body.style.backgroundColor = "#BAE1C4";
     console.log('insert clicked');
 });
@@ -161,6 +167,7 @@ document.querySelector('.remove').addEventListener('click', function() {
     
     document.querySelector('.search').classList.add('hidden');
     document.querySelector('.insert').classList.add('hidden');
+    document.querySelector('.extraPanel').classList.add('hidden');
     document.querySelector('.btns').classList.add('bts-remove-clicked');
     document.body.style.backgroundColor = "#BAE1FF";
     console.log('remove clicked');

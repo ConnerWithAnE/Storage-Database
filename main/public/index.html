@@ -20,29 +20,34 @@
             <button class="sel-btn search">Search</button>
             <button class="sel-btn insert">Insert</button>
             <button class="sel-btn remove ">Remove</button>
+            <div class="sel-btn extraPanel"></div>
         </div>
-
         <div class="search-sec hidden">
-            <p>by</p>
+            <div class="input-container">
+                <div class="input-items">
+                    <button class="search searchTitle">Search</button>
+                    <p>by</p>
             
-            <div class="search-btns">
-                <button class="search-sec-btn" id="box-search" onclick="setBoxSearch()">Box</button>
-                <button class="search-sec-btn" id="item-search" onclick="setItemSearch()">Item</button>
-            </div>
-            <div id="search-form">
-            <div class="search-input-go">
-                <div class="search-input-cont">
-                    <input type="text" id="search-input" placeholder="" name="searchInput">
-                    <div name=""></div>
-                    <input type="image" src="./img/search.png" name='searchbtn' class="search-btn" id="search-go-btn" onclick="searchItem()"/>
+                    <div class="search-btns">
+                        <button class="search-sec-btn" id="box-search" onclick="setBoxSearch()">Box</button>
+                        <button class="search-sec-btn" id="item-search" onclick="setItemSearch()">Item</button>
+                    </div>
+                    <div id="search-form">
+                        <div class="search-input-go">
+                            <div class="search-input-cont">
+                                <input type="text" id="search-input" placeholder="" name="searchInput">
+                                <div name=""></div>
+                                <input type="image" src="./img/search.png" name='searchbtn' class="search-btn" id="search-go-btn" onclick="searchItem()"/>
+                            </div>
+            
+                        </div>
+                    </div>
+                    <div class="search-input-go" id="match-sec">
+                        <div id="search-match-list" class="match-list"></div>
+                    </div>
                 </div>
-            
             </div>
-        </div>
-            <div class="search-input-go" id="match-sec">
-                <div id="search-match-list" class="match-list"></div>
-            </div>
-            <div class="search-result-con hidden">
+            <div class="search-result-con">
                 <div id="search-result">
                 
                 </div>
@@ -54,6 +59,7 @@
         </div>
 
         <div class="insert-sec hidden">
+        <button class="insert insertTitle">Insert</button>
         <div id="insert-form">
             <div class="insert-btns">
                 <input type="text" class="insert-input" id='insert-input-box' placeholder="Box Number">
@@ -66,6 +72,9 @@
         </div>
         </div>
 
+        <div class="remove-sec hidden">
+            
+        </div>
         
         <script src="main.js"></script>
         <script src="handleJson.js"></script>

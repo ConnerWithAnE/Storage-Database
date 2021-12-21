@@ -8,9 +8,10 @@ COPY package*.json ./
 
 RUN npm install express --save
 RUN npm install mongodb --save
+RUN npm install nodemon --save
 
 COPY server.js /usr/src/app/server.js
 COPY /public /usr/src/app/public
 
-CMD ["node", "server.js"]
+CMD ["node", "./server.js"]
 
